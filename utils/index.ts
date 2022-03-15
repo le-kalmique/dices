@@ -1,0 +1,1 @@
+export { saveToClipboard } from "./saveToClipboard";

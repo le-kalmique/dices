@@ -1,0 +1,40 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-areas: "side body";
+  gap: 40px;
+  padding: 30px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "side" "body";
+  }
+}
+
+.side {
+  grid-area: "side";
+}
+
+.body {
+  grid-area: "body";
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  &__text {
+    display: flex;
+    gap: 5px;
+  }
+  &__btn {
+    display: flex;
+  }
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
