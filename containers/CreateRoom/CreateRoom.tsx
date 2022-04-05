@@ -12,10 +12,15 @@ import {
 import uniqid from "uniqid";
 import styles from "./CreateRoom.module.scss";
 import { addRoom, addUserToRoom } from "../../lib/rooms";
+import useUser from "../../lib/useUser";
+import fetchJson from "../../lib/fetchJson";
+import { User } from "../../pages/api/user";
 
 const CreateRoom: React.FC = () => {
   const theme = useTheme();
   const router = useRouter();
+
+  const { mutateUser } = useUser();
 
   const [roomId, setRoomId] = useState("");
   const [name_j, setNameJ] = useState("");
@@ -23,14 +28,15 @@ const CreateRoom: React.FC = () => {
 
   const createRoom = async () => {
     const roomId = uniqid();
+
     await addRoom(roomId, name_c);
-    localStorage.setItem("user", `${name_j}-${roomId}`);
     router.push(`/room/${roomId}`);
   };
 
   const joinRoom = async () => {
+
+
     await addUserToRoom(roomId, name_j);
-    localStorage.setItem("user", `${name_j}-${roomId}`);
     router.push(`/room/${roomId}`);
   };
 

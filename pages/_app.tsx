@@ -1,7 +1,7 @@
 import { NextUIProvider, createTheme } from "@nextui-org/react";
 import Head from "next/head";
 import io, { Socket } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Header } from "../containers/Header";
 import { Loading } from "../containers/Loading";
 import { usePageLoading } from "../hooks";
@@ -15,12 +15,6 @@ export default function App({ Component, pageProps }) {
   const darkTheme = createTheme({
     type: theme,
   });
-
-  useEffect(() => {
-    socket.on("now", (data) => {
-      console.log(data);
-    });
-  }, []);
 
   return (
     <NextUIProvider theme={darkTheme}>

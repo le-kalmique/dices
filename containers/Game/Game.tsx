@@ -5,6 +5,7 @@ import { IUser } from "../../types/interfaces";
 import { Dices } from "../Dices";
 import { defaultDices } from "./constants";
 import { socket } from "../../pages/_app";
+import useUser from "../../lib/useUser";
 
 interface IProps {
   room: number;
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 export const Game: React.FC<IProps> = ({ currentUsers, setCurrentUsers, room }) => {
+  const { user } = useUser();
+
   const [rollState, setRollState] = useState(RollState.Roll);
   const [lvl, setLvl] = useState(0);
   const [playerRollsNum, setPlayerRollsNum] = useState(1);
@@ -52,6 +55,7 @@ export const Game: React.FC<IProps> = ({ currentUsers, setCurrentUsers, room }) 
 
   return (
     <div>
+      User: {user?.login}
       <Dices
         onNext={onNext}
 
